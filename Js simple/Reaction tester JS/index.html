@@ -1,0 +1,109 @@
+<html>
+     <head>
+       		<title>Reaction tester</title>
+    	<style type ="text/css">
+			body {
+
+				font-family: sans-serif;
+				font-size : 120%;
+
+			}
+
+			#shape {
+				width : 200px;
+				height : 200px;
+			 	background-color : red ;
+				position : relative;
+
+			}
+			.bold {
+				font-weight: bold ;
+			}
+			#rc{
+				font-size : 30px;
+				padding :0;
+				margin: 0;
+			}
+			img{
+			  /* Set rules to fill background */
+			  min-height: 100%;
+			  min-width: 1024px;
+
+			  /* Set up proportionate scaling */
+			  width: 100%;
+			  height: auto;
+
+			  /* Set up positioning */
+			  position: fixed;
+			  top: 0;
+			  left: 0;
+				z-index: -1;
+			}
+
+		 </style>
+	 </head>
+<body>
+	<img src ="images/tree-189852.jpg">
+	<p id ="rc">Reation tester</p>
+   	<p > <span calss ="bold"> Your Time: </span><span id ="time"> </span></p>
+ 	<div id ="shape">  </div>
+	<script type ="text/javascript">
+
+
+	function randomColors() {
+        var letters = '0123456789ABCDEF';
+        var color = '#';
+        for (var i = 0; i < 6; i++ ) {
+            color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+    }
+
+
+	var start = new Date().getTime();
+
+
+	function apearShape (){
+		  var top  =Math.random() *300;
+			var left =Math.random() *400;
+			var width = (Math.random() *200)+100;
+			var randomColor = randomColors();
+			if (Math.random() <0.5){
+
+			document.getElementById("shape").style.borderRadius = "50%";
+
+
+			}
+			else {
+
+			document.getElementById("shape").style.borderRadius ="0";
+
+			}
+			document.getElementById("shape").style.width = width;
+			document.getElementById("shape").style.height = width;
+			document.getElementById("shape").style.backgroundColor = randomColor;
+			document.getElementById("shape").style.top = top + "px";
+			document.getElementById("shape").style.left = left + "px";
+			document.getElementById("shape").style.display = "block";
+			start = new Date().getTime();
+		}
+
+
+		function setTimeapear() {
+				setTimeout(apearShape,Math.random() * 2000);
+		}
+  setTimeapear();
+	document.getElementById("shape").onclick = function () {
+				document.getElementById("shape").style.display = "none";
+
+				var end = new Date().getTime();
+				var timeTaken = (end-start)/1000;
+
+            document.getElementById("time").innerHTML = timeTaken + "s" ;
+
+		setTimeapear();
+
+			}
+</script>
+</body>
+</html>

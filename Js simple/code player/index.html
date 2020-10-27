@@ -1,0 +1,172 @@
+<html>
+<head>
+	<link href="jquery-ui.css" rel="stylesheet">
+	<script src="jquery-3.2.1.min.js"></script>
+	<script src="jquery-ui.js"></script>
+   <style type ="text/css">
+	   body{
+		   font-family : sans-serif;
+		   margin:0px; 
+		   padding :0px; 
+	   }
+	   #top-section{
+		   background-color :#F7F7F7 ; 
+		   width : 100% ; 
+		   height : 50px; 
+		   margin:-11 0 0 0;
+		   padding : 0;
+	   }
+	   ul{
+		   width:300px;
+		   margin: 11px auto;
+		   
+	   }
+	   button {
+		 margin :  8px -2px -2px -2px; 
+	     background-color : #E5E5E5;
+		 border : 0px;
+		 border-left :1px solid #CCCCCC ; 
+		 padding : 7px 9px 7px 9px;
+		 color : #5E2323;   
+	   }
+	   button:active {
+		 margin :  -2px; 
+	     background-color : #e5f1ff;
+		 border : 0px;
+		 border-left :1px solid #CCCCCC ; 
+		 padding : 7px 9px 7px 9px;
+		 color : #5E2323;
+		   
+	   }
+	   #html-but{
+		   border-radius : 5px 0px 0px 5px;
+		   border:0px; 
+	   }
+	   
+	   #out-but{
+		   border-radius : 0px 5px 5px 0px;
+		   border:0px;
+		   border-left :1px solid #CCCCCC ; 
+	   }
+	   #css-but {
+		  margin-right : -3px;
+		   
+	   }
+	
+	   #html-sec{
+		      margin : 0;
+		     padding-left: 7;
+		   
+	   }
+	   
+	   #css-sec{
+   		     
+		     padding-left: 7;
+	   }
+	   
+	   #js-sec{
+             padding-left: 7; 
+		    
+	   }
+	   #main-section{
+		   width  : 100%; 
+		   margin : 0;
+		   padding: 0; 
+	   }
+	   textarea {
+		resize: none;  
+		border-top : 0px; 
+		border-left : 0px; 
+		margin-left: -4px; 
+		border-color : #ebebeb ; 
+		overflow: auto;
+    	outline: none;
+		-webkit-box-shadow: none;
+		-moz-box-shadow: none;
+		box-shadow: none;
+        background-color : #F7F7F7 ;  
+	    }
+	   .active {
+		   background-color: #d4e6fc; 
+		   
+	   }
+	    input[type=text]:focus, textarea:focus {
+		resize: none;
+		border-top : 0px; 
+		border-left : 0px; 
+		margin-left: -4px; 
+		overflow: auto;
+    	outline: none;
+		-webkit-box-shadow: none;
+		-moz-box-shadow: none;
+		box-shadow: none;
+			background-color: white ; 
+           
+	    }
+	   .active {
+		   background-color: #d4e6fc; 
+		   
+	   }
+	   iframe {
+		   margin : -1; 
+		   padding : 0; 
+		   border :0; 
+	   }
+	   .hide {
+		   display : none ; 
+	   }
+	   
+ 	</style>	
+</head>	
+
+<body>
+<div id="container ">
+
+	 <div id ="top-section">
+	  
+	     <ul>
+		     <button id="html-but" class="active">HTML</button>
+			 <button id="css-but"  class="">CSS</button>
+			 <button id="js-but"   class="">JavaScript</button>
+			 <button id="out-but"  class="active">Output</button>
+		 </ul>    
+	</div>
+</div>	
+	<div id="main-section">
+	
+   	    <textarea id= "html-sec" class=""></textarea>
+		<textarea id= "css-sec"  class="hide">p{color : green ; }</textarea>
+		<textarea id= "js-sec"   class="hide">animate Me</textarea>
+		<iframe   id= "out-sec"  class=""></iframe>
+	
+	
+	</div>	 
+
+	<script type ="text/javascript"> 
+		$("button").click(function(){
+				$(this).toggleClass("active");
+			    var secId = $(this).attr("id"); 
+			    secId= "#"+secId.replace('-but','-sec');
+		    	$(secId).toggleClass("hide"); 
+				var x = 4- $(".hide").length;
+				$("textarea").width( $(window).width()/x ); 
+			    $("ifram").width( $(window).width()/x ); 
+		});
+		//changing the content of html
+		
+		$("#html-sec").on('change keyup paste', function() {
+        $("iframe").contents().find("html").html($("#html-sec").val());
+	    $("iframe").contents().find("html").html("<html><head><style type='text/css'>" + $("#css-sec").val()+"</style></head><body>"+ $("#html-sec").val() +"</body></html>");		
+        });
+		//end html changing content 
+		//changing the widths 
+		$("textarea").height( $(window).height()- $("#top-section").height() -2); 
+	 
+		$("iframe").height( $(window).height()- $("#top-section").height() -2);
+	    
+		
+	</script>	
+	
+</body>
+
+</html>                                                                      

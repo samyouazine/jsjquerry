@@ -1,0 +1,133 @@
+<html>
+<head>
+	<script src="jquery-3.2.1.min.js"></script>
+	<style type ="text/css">
+		body {
+			font-family : sans-serif; 
+			font-size: 140%; 
+			
+		}
+		input {
+			height : 40px; 
+			border-radius : 5px;
+			border : 1px grey solid ; 
+			font-size : 70%;
+			padding: 5px 0px 5px 20px;
+			width : 300px;
+		}
+		#wrap {
+			
+			width : 500px; 
+			margin : 0 auto ; 
+			
+		}
+		label {
+			position : relative ;
+			top : 7px; 
+			width : 200px; 
+			float : left ;
+			
+		}
+		
+		.form-element{
+		 margin-top: 10px;
+			
+		}
+		#signup {
+			
+			width : 200px;
+			margin-left :200px;
+			
+		}
+	</style>	
+</head>	
+
+<body>
+	
+	<div id ="wrap">
+		<p id="message"> </p>
+		
+		<div class ="form-element">
+			<label>Email</label>
+			<input id="email" placeholder="Enter Your Email" >
+		</div>
+		<br>
+		<div class = "form-element">	
+			<label id="telephone">telephone</label>
+			<input id="tel" placeholder="eg : 0560360291" >
+		</div>
+			<br>
+		<div class = "form-element">	
+			<label id="password">Password</label>
+			<input type="password" id="pw" placeholder="Type your password" >
+		</div>
+		<br>
+		<div class = "form-element">	
+			<label id="password">Confirm Password</label>
+			<input type="password" id="cpw" placeholder="Type your password" >
+		</div>
+		<br>
+		<div class = "form-element">	
+			 <input type="submit" id="signup" value ="Sign up">
+		</div>
+	</div>
+	
+	
+	<script type ="text/javascript"> 
+		function isEmail(email) {
+		  var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+		  return regex.test(email);
+		}
+		
+		$("#signup").click(function() {
+			var message = "" ; 
+			var emailadd =  $("#email").val(); 
+			if( isEmail(emailadd) == false){
+				message += "<p> Your Email is incorrect <p>";  
+			}
+			
+			var phoneNumber = $("#tel").val();
+			if ( $.isNumeric(phoneNumber) == false || phoneNumber.length !=10 ){
+				message += "<p>Your Phone number is incorrect<p>"; 
+			}
+        			
+			var password = $("#pw").val(); 
+			var cPw = $("#cpw").val();
+			
+			if(password != cPw){
+				message += "<p>Your Passwords Doesnt match";
+			}
+			
+			
+			
+			$("#message").html(message); 
+		});
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	
+	</script>	
+	
+</body>
+
+</html>
